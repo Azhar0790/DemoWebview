@@ -228,18 +228,18 @@ public class UniversalWebViewFragment extends Fragment implements View.OnTouchLi
             super.onPageStarted(view, url, favicon);
             webViewPreviousState = PAGE_STARTED;
 
-//            if (loadingDialog == null || !loadingDialog.isShowing())
-//                loadingDialog = ProgressDialog.show(getActivity(), "",
-//                        "Loading Please Wait", true, true,
-//                        new OnCancelListener() {
-//
-//                            @Override
-//                            public void onCancel(DialogInterface dialog) {
-//                                // do something
-//                            }
-//                        });
-//
-//            loadingDialog.setCancelable(false);
+            if (loadingDialog == null || !loadingDialog.isShowing())
+                loadingDialog = ProgressDialog.show(getActivity(), "",
+                        "Loading Please Wait", true, true,
+                        new OnCancelListener() {
+
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                // do something
+                            }
+                        });
+
+            loadingDialog.setCancelable(false);
 
         }
 
@@ -267,10 +267,10 @@ public class UniversalWebViewFragment extends Fragment implements View.OnTouchLi
         public void onPageFinished(WebView view, String url) {
 
             if (webViewPreviousState == PAGE_STARTED) {
-//                if (null != loadingDialog) {
-//                    loadingDialog.dismiss();
-//                    loadingDialog = null;
-//                }
+                if (null != loadingDialog) {
+                    loadingDialog.dismiss();
+                    loadingDialog = null;
+                }
             }
         }
     }
